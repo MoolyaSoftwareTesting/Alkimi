@@ -1,13 +1,8 @@
 ## Getting Started
-- **Install dependencies**:
-    npm install
-
-- **Run Cypress tests**:
-    npx cypress open
-- **To run cypress test individually**:
-    npx cypress run --spec "cypress/e2e/activateAccount.spec.cy.js"   
-- **To run e2e test**:
-    node run-tests.js 
+- **Install dependencies**: npm install
+- **Run Cypress tests**: npx cypress open
+- **To run cypress test individually**: npx cypress run --spec "cypress/e2e/activateAccount.spec.cy.js"   
+- **To run e2e test**: node run-tests.js 
 
 ## Folder Structure
 - **fixtures/**: Test data files.
