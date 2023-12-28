@@ -9,8 +9,7 @@
 - **e2e/**: Cypress test files.
 
 ## Email Testing with Mailosaur
-For email testing, have used Mailosaur to handle test emails.
-- **Ensure the following**:
+For email testing, have used Mailosaur to handle test emails.Ensure the following:
 - **Mailosaur Account**: Sign up for a Mailosaur account and obtain your API key.
 - **Update Cypress Config**: Update your cypress.config.js file with your 
 
