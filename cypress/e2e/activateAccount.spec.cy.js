@@ -1,4 +1,3 @@
-
 before(() => {
   const MAILOSAUR_API_KEY = Cypress.env('MAILOSAUR_API_KEY');
   Cypress.env('CYPRESS_MAILOSAUR_API_KEY', MAILOSAUR_API_KEY);
