@@ -14,9 +14,10 @@ node run-tests.js
 - **e2e/**: Cypress test files.
 
 ## Email Testing with Mailosaur
-For email testing, have used Mailosaur to handle test emails. Ensure the following:
-Mailosaur Account: Sign up for a Mailosaur account and obtain your API key.
-Update Cypress Config: Update your cypress.config.js file with your 
+For email testing, have used Mailosaur to handle test emails.
+-**Ensure the following:**
+-**Mailosaur Account:** Sign up for a Mailosaur account and obtain your API key.
+-**Update Cypress Config:** Update your cypress.config.js file with your 
 
 ## Troubleshooting
 -**issue:** Tests fail due to an email already existing
