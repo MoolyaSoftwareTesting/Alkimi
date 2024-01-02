@@ -19,36 +19,25 @@ Cypress.Commands.add('login', ({ email, password }) => {
     cy.screenshot(Locators.loggedIn);
   });
 });
-/*
-Cypress.Commands.add('connectToMetaMask', () => {
-  cy.window().then((win) => {
-    if (win.ethereum) {
-      win.ethereum.enable();
-    } else {
-      cy.log('MetaMask not detected.');
-    }
-  });
-});
-*/
 
 Cypress.Commands.add('setupMetamask', () => {
   const mnemonic = 'gesture rather oblige force address fellow thumb nose hedgehog code snippets include function setAddress'()
-   {
-     if (!localStorage.getItem('walletAddress')) {
-       cy.visit('http://localhost:3000');
-        cy.get('.container > .button').click();
-         cy.get('#password').type('test');
-          cy.get('#confirmPassword').type('test');
-           cy.get('.create').click();
-      } 
-      else { 
-        const address = localStorage.getItem('walletAddress');
-         cy.viewport(320, 568);
-          cy.visit('http://localhost:3000');
-           cy.get('.container > .button').click();
-            cy.get('#metamask-mnemonic').type(address);
-             cy.get('#metamask-password').type('test');
-              cy.get('.import').click();
-        } 
-    };
+  {
+    if (!localStorage.getItem('walletAddress')) {
+      cy.visit('http://localhost:3000');
+      cy.get('.container > .button').click();
+      cy.get('#password').type('test');
+      cy.get('#confirmPassword').type('test');
+      cy.get('.create').click();
+    }
+    else {
+      const address = localStorage.getItem('walletAddress');
+      cy.viewport(320, 568);
+      cy.visit('http://localhost:3000');
+      cy.get('.container > .button').click();
+      cy.get('#metamask-mnemonic').type(address);
+      cy.get('#metamask-password').type('test');
+      cy.get('.import').click();
+    }
+  };
 });
