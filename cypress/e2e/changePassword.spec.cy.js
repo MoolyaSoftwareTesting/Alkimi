@@ -1,32 +1,51 @@
+/**Issue: Currently, the password change functionality is failing due to known issue (KYC failure)
+ * This prevents successful password changes. Therefore, have Automated Negative Scenarios
+ */
+
+import { Locators } from "../support/locators";
+
 describe('Change Password', () => {
   beforeEach(() => {
     cy.viewport(1920, 1080);
-    cy.wait(1000);
-    const url = Cypress.env('url');
     // Visit the URL before each test
-    cy.visit(url);
-    cy.contains('button', 'Accept Only Essential Cookies').click();
-    cy.contains('Log In').click();
+    cy.visitAlkimi();
+    cy.fixture('testdata').then((data) => {
+      cy.login({ email: data.user.email, password: data.user.password });
+    });
   });
 
-  it('should change the account password', () => {
+  it('should display error message for password change failure', () => {
     cy.fixture('testdata').then((data) => {
-      cy.get('#email-input').type(data.user.email);
-      cy.get('#password-input').type(data.user.password);
-      cy.contains('button', 'Log in').click();
-
-      cy.contains('Logged in', { timeout: 20000 }).should('be.visible').then(() => {
-        cy.screenshot('Logged in');
-      });
-      cy.wait(1000);
-      cy.contains('New Password').scrollIntoView();
-      cy.get("input[placeholder='New Password']").type(data.user.newPassword);
-      cy.get("input[placeholder='Confirm Password']").type(data.user.newPassword);
-      cy.wait(1000); // wait for server response before next command
-      cy.contains('button', 'Change password').click();
-      cy.wait(1000);
-      cy.contains('user kyc not verified', { timeout: 20000 }).should('be.visible').then(() => {
+      cy.get(Locators.newPassword, { timeout: 10000 }).scrollIntoView();
+      cy.get(Locators.newPassword).type(data.user.newPassword);
+      cy.get(Locators.confirmPassword).type(data.user.newPassword);
+      cy.contains(Locators.changePassword, { timeout: 10000 }).click();
+      cy.contains(Locators.verificationMessage, { timeout: 1000 }).should('be.visible').then(() => {
         cy.screenshot('change password unsuccessful');
+      });
+    });
+  });
+
+  it('should display error for Mismatched Passwords', () => {
+    cy.fixture('testdata').then((data) => {
+      cy.get(Locators.newPassword, { timeout: 10000 }).scrollIntoView();
+      cy.get(Locators.newPassword).type('Password@12');
+      cy.get(Locators.confirmPassword).type('Pass@1');
+      cy.contains(Locators.changePassword, { timeout: 10000 }).click();
+      cy.contains('Passwords do not match', { timeout: 1000 }).should('be.visible').then(() => {
+        cy.screenshot();
+      });
+    });
+  });
+
+  it('should short password', () => {
+    cy.fixture('testdata').then((data) => {
+      cy.get(Locators.newPassword, { timeout: 10000 }).scrollIntoView();
+      cy.get(Locators.newPassword).type('pass');
+      cy.get(Locators.confirmPassword).type('pass');
+      cy.contains(Locators.changePassword, { timeout: 10000 }).click();
+      cy.contains('Password must be at least 6 characters', { timeout: 1000 }).should('be.visible').then(() => {
+        cy.screenshot();
       });
     });
   });

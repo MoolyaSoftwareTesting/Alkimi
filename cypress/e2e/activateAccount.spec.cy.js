@@ -13,18 +13,21 @@ describe('Email', () => {
     }).then(email => {
       // Assert that the mail is related to Alkimi
       expect(email.subject).to.equal('Verify your account for Alkimi SoftStaking');
-      cy.log('body:', email);
-      console.log('body:', email);
       verifyEmailLink = email.text.links[1];
-      cy.log('verifyEmailLink:', verifyEmailLink);
-      console.log('verifyEmailLink:', verifyEmailLink);
-      console.log(email.html.links.length);
       const firstLink = email.html.links[0]
-      cy.log(firstLink);
       cy.visit(firstLink.href);
-      cy.wait(5000);
       cy.screenshot()
     });
   });
+
+  it('Assert email verification', () => {
+    //Since clicking "Verify Now" may not display UI, asserting email verification vio login
+    cy.visitAlkimi();
+    cy.fixture('testdata').then((data) => {
+      //Logging in and checking if the email is verified via login
+      cy.login({ email: data.user.email, password: data.user.password });
+      cy.contains('Email Verified', { timeout: 20000 }).should('be.visible');
+    });
+  })
 
 })

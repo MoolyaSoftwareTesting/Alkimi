@@ -1,21 +1,23 @@
+import { Locators } from "../support/locators";
+
 describe('Create Account', () => {
+  beforeEach(() => {
+    cy.viewport(1920, 1080);
+    // Visit the URL before each test
+    cy.visitAlkimi();
+  });
+
   it('should create a new account', () => {
-    const url = Cypress.env('url');
-    cy.visit(url);
-    cy.contains('button', 'Accept Only Essential Cookies').click();
-    cy.contains('Log In').click();
-    cy.contains('Sign up').click();
+    cy.contains(Locators.signupText).click();
     cy.fixture('testdata').then((data) => {
-      cy.get("input[placeholder='Full name']").type(data.user.name);
-      cy.get("input[placeholder='Email']").type(data.user.email);
-      cy.get("input[name='password']").type(data.user.password);
-      cy.get("input[name='confirm-password']").type(data.user.password);
-      cy.wait(500);
-      cy.get('input[name="terms"]').click();
-      cy.get('button[type="submit"]').click();
-      // Assert that the login page is visible
-      cy.wait(5000);
-      cy.screenshot()
+      cy.get(Locators.fullName).type(data.user.name);
+      cy.get(Locators.registerEmail).type(data.user.email);
+      cy.get(Locators.Password).type(data.user.password);
+      cy.get(Locators.reEnterPassword).type(data.user.password);
+      cy.get(Locators.checkBox, { timeout: 10000 }).click();
+      cy.get(Locators.signInButton).click();
+      //Assertion
+      cy.url().should("include", "/login");
     })
   })
 })
