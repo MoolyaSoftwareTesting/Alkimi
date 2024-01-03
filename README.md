@@ -1,6 +1,6 @@
 ## Getting Started
 - **Install dependencies**: Run 'npm install' to install project dependiences.
-- **Install Cypress**: Run npx install Cypress --save -dev
+- **Install Cypress**: Run 'npx install Cypress --save -dev'
 - **Run Cypress tests Locally**: Execute 'npx cypress open' to open Cypress Test Runner.
 - **To run cypress test individually through terminal**: npx cypress run --spec "cypress/e2e/activateAccount.spec.cy.js"   
   
