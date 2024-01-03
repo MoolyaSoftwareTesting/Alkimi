@@ -2,42 +2,57 @@
 import 'cypress-mailosaur'
 import { Locators } from "../support/locators";
 
-
-
 Cypress.Commands.add('visitAlkimi', () => {
   const url = Cypress.env('url');
   cy.visit(url);
-  cy.contains('button', 'Accept Only Essential Cookies').click();
-  cy.contains('Log In').click();
+  cy.clickElementWithText(Locators.acceptCookiesButton);
+  cy.clickElementWithText(Locators.loginText);
+  // cy.contains(Locators.acceptCookiesButton).click();
+  //cy.contains(Locators.loginText).click();
 });
 
+Cypress.Commands.add('clickElementWithText', (text) => {
+  cy.contains(text).click();
+});
+
+Cypress.Commands.add('clickElementWithLocator', (selector) => {
+  cy.get(selector).click();
+});
+
+Cypress.Commands.add('scrollIntoViewBySelector', (selector, timeout = 10000) => {
+  cy.get(selector, { timeout }).scrollIntoView();
+})
+
+Cypress.Commands.add('typeIntoInput', (selector, text) => {
+  cy.get(selector).type(text);
+});
+
+
+
 Cypress.Commands.add('login', ({ email, password }) => {
-  cy.get(Locators.email).type(email);
-  cy.get(Locators.password).type(password);
-  cy.get(Locators.loginButton).click();
+  cy.typeIntoInput(Locators.email, email);
+  cy.typeIntoInput(Locators.password, password);
+  cy.clickElementWithLocator(Locators.loginButton);
   cy.contains(Locators.loggedIn, { timeout: 20000 }).should('be.visible').then(() => {
     cy.screenshot(Locators.loggedIn);
   });
 });
 
 Cypress.Commands.add('setupMetamask', () => {
-  const mnemonic = 'gesture rather oblige force address fellow thumb nose hedgehog code snippets include function setAddress'()
-  {
-    if (!localStorage.getItem('walletAddress')) {
-      cy.visit('http://localhost:3000');
-      cy.get('.container > .button').click();
-      cy.get('#password').type('test');
-      cy.get('#confirmPassword').type('test');
-      cy.get('.create').click();
-    }
-    else {
-      const address = localStorage.getItem('walletAddress');
-      cy.viewport(320, 568);
-      cy.visit('http://localhost:3000');
-      cy.get('.container > .button').click();
-      cy.get('#metamask-mnemonic').type(address);
-      cy.get('#metamask-password').type('test');
-      cy.get('.import').click();
-    }
-  };
+  if (!localStorage.getItem('walletAddress')) {
+    cy.visit('http://localhost:3000');
+    cy.get('.container > .button').click();
+    cy.get('#password').type('test');
+    cy.get('#confirmPassword').type('test');
+    cy.get('.create').click();
+  }
+  else {
+    const address = localStorage.getItem('walletAddress');
+    cy.viewport(320, 568);
+    cy.visit('http://localhost:3000');
+    cy.get('.container > .button').click();
+    cy.get('#metamask-mnemonic').type(address);
+    cy.get('#metamask-password').type('test');
+    cy.get('.import').click();
+  }
 });

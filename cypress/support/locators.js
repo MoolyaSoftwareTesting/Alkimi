@@ -1,5 +1,5 @@
 export const Locators = {
-    acceptCookiesButton: ('button', 'Accept Only Essential Cookies'),
+    acceptCookiesButton: 'Accept Only Essential Cookies',
     loginText: 'Log In',
     signupText: 'Sign up',
     fullName: "input[placeholder='Full name']",
@@ -15,6 +15,6 @@ export const Locators = {
     loggedIn: 'Logged in',
     newPassword: 'input[placeholder="New Password"]',
     confirmPassword: "input[placeholder='Confirm Password']",
-    changePassword: ('button', 'Change password'),
+    changePassword: ('Change password'),
     verificationMessage: 'user kyc not verified'
 }

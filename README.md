@@ -1,13 +1,22 @@
 ## Getting Started
-- **Install dependencies**: npm install
-- **Run Cypress tests**: npx cypress open
-- **To run cypress test individually**: npx cypress run --spec "cypress/e2e/activateAccount.spec.cy.js"   
-- **To run e2e test**: node run-tests.js 
+- **Install dependencies**: Run 'npm install' to install project dependiences.
+- **Install Cypress**: Run npx install Cypress --save -dev
+- **Run Cypress tests Locally**: Execute 'npx cypress open' to open Cypress Test Runner.
+- **To run cypress test individually through terminal**: npx cypress run --spec "cypress/e2e/activateAccount.spec.cy.js"   
+  
+## Package.json
+ - **Test Script:** The 'test' script is configured to run 'node run-tests.js'.
+ - The 'package.json' file contains essential information about the project, including scripts for executing javascript
 
 ## Folder Structure
 - **fixtures/**: Test data files.
 - **e2e/**: Cypress test files.
-
+- **Screenshots/**: stores screenshots of executed tests.
+- **Videos/**: Stores complete execut video.
+- **support/**: Contains commands.js,e2e.js and locators.js files.
+* **commands.js**: Custom commands for common operations like login etc.,
+* **locators.js** : Page object model pattern implementation using page objects concept.
+  
 ## Email Testing with Mailosaur
 For email testing, have used Mailosaur to handle test emails.Ensure the following:
 - **Mailosaur Account**: Sign up for a Mailosaur account and obtain your API key.

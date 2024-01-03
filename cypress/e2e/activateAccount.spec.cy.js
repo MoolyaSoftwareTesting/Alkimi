@@ -1,8 +1,8 @@
-before(() => {
-  const MAILOSAUR_API_KEY = Cypress.env('MAILOSAUR_API_KEY');
-  Cypress.env('CYPRESS_MAILOSAUR_API_KEY', MAILOSAUR_API_KEY);
-})
 describe('Email', () => {
+  before(() => {
+    const MAILOSAUR_API_KEY = Cypress.env('MAILOSAUR_API_KEY');
+    Cypress.env('CYPRESS_MAILOSAUR_API_KEY', MAILOSAUR_API_KEY);
+  })
   let verifyEmailLink;
   const serverId = Cypress.env('serverId');
   const testEmail = Cypress.env('testEmail');
@@ -22,6 +22,7 @@ describe('Email', () => {
 
   it('Assert email verification', () => {
     //Since clicking "Verify Now" may not display UI, asserting email verification vio login
+    cy.wait(10000);
     cy.visitAlkimi();
     cy.fixture('testdata').then((data) => {
       //Logging in and checking if the email is verified via login

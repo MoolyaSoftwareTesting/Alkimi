@@ -18,7 +18,7 @@ module.exports = defineConfig({
     url: 'https://qa.dprtuccdijrqp.amplifyapp.com',
     MAILOSAUR_API_KEY: 'Q5eJcU7OfSmi0e73SAb809EtgM2pzR2p',
     serverId: 'gadx3q6t',
-    testEmail: 'anything19@gadx3q6t.mailosaur.net'
+    testEmail: 'anything20@gadx3q6t.mailosaur.net'
   },
 
   e2e: {
