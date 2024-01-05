@@ -26,3 +26,9 @@ For email testing, have used Mailosaur to handle test emails.Ensure the followin
 - **issue**: Tests fail due to an email already existing
 - **Solution**: update 'email' in 'fixture/testdata.json' and 'testEmail' in 'cypress.config.js' files.
 - **Note**: For emails, the domain is [@gadx3q6t.mailosaur.net], and anything before it should be unique. The value of 'email' and 'testEmail' should be same.
+
+## Achievements and Challenges
+- Successfully automated the creation of a new account.
+- Asserted email verification by logging in, overcoming the absence of UI for the "Verify Now" button.
+- Initiated the connection with the Metamask wallet, up to the point where the Metamask extension opens.
+- Currently, the password change functionality is failing due to known issue (KYC failure).This prevents successful password changes. Therefore, have Automated Negative Scenarios
