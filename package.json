@@ -1,0 +1,15 @@
+{
+  "name": "Alkimi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node run-tests.js"
+  },
+  "keywords": [],
+  "author": "Afreen",
+  "license": "MIT",
+  "dependencies": {
+    "@metamask/detect-provider": "^2.0.0"
+  }
+}
