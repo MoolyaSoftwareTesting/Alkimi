@@ -9,6 +9,9 @@
   "keywords": [],
   "author": "Afreen",
   "license": "MIT",
+  "dependencies": {
+    "@metamask/detect-provider": "^2.0.0"
+ 
   "devDependencies": {
     "cypress": "13.6.1"
   }

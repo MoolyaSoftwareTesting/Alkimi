@@ -1,4 +1,3 @@
-// cypress/support/commands.js
 import 'cypress-mailosaur'
 import { Locators } from "../support/locators";
 
@@ -7,8 +6,6 @@ Cypress.Commands.add('visitAlkimi', () => {
   cy.visit(url);
   cy.clickElementWithText(Locators.acceptCookiesButton);
   cy.clickElementWithText(Locators.loginText);
-  // cy.contains(Locators.acceptCookiesButton).click();
-  //cy.contains(Locators.loginText).click();
 });
 
 Cypress.Commands.add('clickElementWithText', (text) => {
@@ -26,8 +23,6 @@ Cypress.Commands.add('scrollIntoViewBySelector', (selector, timeout = 10000) => 
 Cypress.Commands.add('typeIntoInput', (selector, text) => {
   cy.get(selector).type(text);
 });
-
-
 
 Cypress.Commands.add('login', ({ email, password }) => {
   cy.typeIntoInput(Locators.email, email);

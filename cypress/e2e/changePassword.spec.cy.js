@@ -5,7 +5,7 @@ import { Locators } from "../support/locators";
 
 describe('Change Password', () => {
   beforeEach(() => {
-    // Visit the URL before each test
+    // Visit Alkimi and login using test data
     cy.visitAlkimi();
     cy.fixture('testdata').then((data) => {
       cy.login({ email: data.user.email, password: data.user.password });

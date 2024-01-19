@@ -1,5 +1,5 @@
 ## Getting Started
-- **Install dependencies**: Run 'npm install' to install project dependiences.
+- **Install Dependencies**: Run 'npm install' to install project dependiences.
 - **Install Cypress**: Run 'npx install Cypress --save -dev'
 - **Run Cypress tests Locally**: Execute 'npx cypress open' to open Cypress Test Runner.
 - **To run cypress test individually through terminal**: npx cypress run --spec "cypress/e2e/activateAccount.spec.cy.js"   
@@ -26,6 +26,11 @@ For email testing, have used Mailosaur to handle test emails.Ensure the followin
 - **issue**: Tests fail due to an email already existing
 - **Solution**: update 'email' in 'fixture/testdata.json' and 'testEmail' in 'cypress.config.js' files.
 - **Note**: For emails, the domain is [@gadx3q6t.mailosaur.net], and anything before it should be unique. The value of 'email' and 'testEmail' should be same.
+
+## MetaMask Connection Test
+- Connects to MetaMask, adds a custom etherem chain, and links the account.
+- **Note**: Manually unlock your Metamask account during test.Password to add manually: 'Password@123'.
+
 
 ## Achievements and Challenges
 - Successfully automated the creation of a new account.
